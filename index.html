@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mask Size Detection</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NIV Mask Sizing Tool</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h2>Scan Face to Detect Mask Size</h2>
-  <video id="inputVideo" autoplay muted playsinline></video>
-  <canvas id="overlay"></canvas>
-  <div id="resultBox">Detecting...</div>
+  <h2>SVASTEK VAYU NIV Mask Sizing Tool</h2>
+  <p>⭐ Hold your phone about 30cm (1 foot) from your face and center your face in the circle.</p>
+
+  <div id="container">
+    <video id="video" width="640" height="480" autoplay muted></video>
+    <canvas id="overlay" width="640" height="480"></canvas>
+  </div>
+
+  <div id="message">Initializing...</div>
 
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
