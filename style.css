@@ -1,47 +1,35 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #f2f4f7;
-  margin: 0;
-  padding: 20px;
+  background: #f0f4f8;
   display: flex;
   justify-content: center;
+  padding: 20px;
+  margin: 0;
 }
 
 .container {
-  max-width: 400px;
+  max-width: 360px;
   width: 100%;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-}
-
-.instruction {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.camera-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
+h2 {
+  color: #2b6cb0;
+  margin-bottom: 20px;
 }
 
 .video-wrapper {
   position: relative;
   width: 100%;
-  max-width: 300px;
   aspect-ratio: 3 / 4;
   background: #000;
   border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 12px;
 }
 
 video, canvas {
@@ -53,30 +41,29 @@ video, canvas {
   left: 0;
 }
 
-.controls {
+.buttons {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  max-width: 300px;
-  margin-top: 10px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 button {
-  padding: 10px 14px;
+  flex: 1;
+  padding: 10px;
+  background: #2b6cb0;
+  color: #fff;
   border: none;
-  background: #007bff;
-  color: white;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 14px;
   cursor: pointer;
 }
 
 button:hover {
-  background: #0056b3;
+  background: #2c5282;
 }
 
 #resultBox {
-  margin-top: 15px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 16px;
+  color: #333;
 }
