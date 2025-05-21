@@ -36,6 +36,7 @@ async function startCamera() {
   try {
     currentStream = await navigator.mediaDevices.getUserMedia(constraints);
     video.srcObject = currentStream;
+
     video.onloadedmetadata = () => {
       video.play();
       updateCanvasSize();
@@ -54,6 +55,7 @@ function stopCamera() {
 }
 
 function updateCanvasSize() {
+  // Set canvas to video’s natural width/height for accurate scaling
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
 }
@@ -80,7 +82,7 @@ function onResults(results) {
 
   const landmarks = results.multiFaceLandmarks[0];
 
-  // Draw landmarks
+  // Draw landmarks points
   for (const point of landmarks) {
     ctx.beginPath();
     ctx.arc(point.x * canvas.width, point.y * canvas.height, 2, 0, 2 * Math.PI);
@@ -88,8 +90,38 @@ function onResults(results) {
     ctx.fill();
   }
 
-  const top = landmarks[168]; // nose bridge
-  const bottom = landmarks[8]; // chin
+  // Draw face outline connecting landmarks smoothly
+  ctx.strokeStyle = "lime";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+
+  // You can connect specific landmarks for a cleaner face outline:
+  // For simplicity, connect these jawline points in order:
+  const jawlineIndices = [
+    127, 34, 139, 127, 162, 21, 54, 103,
+    67, 109, 10, 338, 297, 332, 284, 251,
+    389, 356, 454, 323, 361, 288, 397, 365,
+    379, 378, 400, 377, 152, 148, 176, 149,
+    150, 136, 172, 58, 132, 93, 234, 127
+  ];
+
+  jawlineIndices.forEach((idx, i) => {
+    const pt = landmarks[idx];
+    const x = pt.x * canvas.width;
+    const y = pt.y * canvas.height;
+    if (i === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
+  });
+
+  ctx.closePath();
+  ctx.stroke();
+
+  // Calculate face height using nose bridge (168) and chin (8)
+  const top = landmarks[168];
+  const bottom = landmarks[8];
 
   const dx = (bottom.x - top.x) * canvas.width;
   const dy = (bottom.y - top.y) * canvas.height;
@@ -112,5 +144,5 @@ function onResults(results) {
   }, 3000);
 }
 
-// Start the camera on load
+// Start the camera immediately on load
 startCamera();
