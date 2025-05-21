@@ -3,26 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mask Size Recommender</title>
+  <title>Mask Size Detector</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
 </head>
 <body>
   <div class="container">
-    <h2>SVASTEK - Mask Sizing Tool</h2>
+    <h1>SVASTEK Mask Sizer</h1>
 
-    <div class="video-wrapper">
-      <video id="inputVideo" autoplay muted playsinline></video>
-      <canvas id="overlay"></canvas>
-    </div>
+    <video id="inputVideo" autoplay muted playsinline></video>
+    <canvas id="overlay"></canvas>
 
-    <div class="buttons">
+    <div class="controls">
       <button id="toggleCamera">Switch Camera</button>
-      <button id="captureBtn">Capture & Recommend</button>
+      <button id="captureBtn">Capture</button>
     </div>
 
-    <div id="resultBox">Hold the phone ~30cm away from face and click capture.</div>
+    <div id="resultBox">Align your face and tap "Capture"</div>
   </div>
 
   <script src="script.js"></script>
