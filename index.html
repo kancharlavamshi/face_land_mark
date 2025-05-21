@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mask Size Recommender</title>
+  <title>Mask Sizing Tool</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
@@ -11,16 +11,20 @@
 <body>
   <div class="container">
     <h1>Mask Size Recommender</h1>
-    <p class="instruction">Hold your phone ~30cm from your face. Keep steady and ensure good lighting.</p>
-    <div class="video-container">
+    <p class="instruction">Hold phone ~30cm from your face. Tap "Capture" when ready.</p>
+    <div class="video-wrapper">
       <video id="inputVideo" autoplay playsinline></video>
       <canvas id="overlay"></canvas>
     </div>
+
     <div class="controls">
       <button id="toggleCamera">Switch Camera</button>
+      <button id="captureBtn">Capture</button>
     </div>
-    <div id="resultBox">Initializing...</div>
+
+    <div id="resultBox">Waiting for capture...</div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
